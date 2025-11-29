@@ -4,22 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>NFC.Creditcard – NFC, Contactless & EMV Explained</title>
-  <meta name="description" content="NFC.creditcard explains how NFC, contactless cards and EMV contactless work: antennas, ranges, security, interference and real-world reliability." />
+  <title>NFC.Creditcard – NFC Card & Wallet Payments Explained</title>
+  <meta name="description" content="Understand how NFC powers tap-to-pay credit cards and mobile wallets: radio layer, tokenization, security checks and what happens when you hold a card near the terminal." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://nfc.creditcard/" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="NFC.Creditcard – NFC & Contactless Card Technology" />
-  <meta property="og:description" content="Independent explanation of NFC and EMV contactless: how the antenna works, why range is short, and what protects you from skimming." />
+  <meta property="og:title" content="NFC.Creditcard – NFC Card & Wallet Payments Explained" />
+  <meta property="og:description" content="Neutral overview of how NFC is used in modern card and wallet payments, from low-level signal exchange to issuer approval and risk controls." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nfc.creditcard/" />
   <meta property="og:image" content="https://choose.creditcard/preview.png?utm_source=nfc.creditcard&utm_medium=referral&utm_campaign=og_image" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="NFC.Creditcard – NFC & Contactless Card Technology" />
-  <meta name="twitter:description" content="Learn how NFC card antennas, terminals and EMV contactless protocols actually work in real life." />
+  <meta name="twitter:title" content="NFC.Creditcard – NFC Card & Wallet Payments Explained" />
+  <meta name="twitter:description" content="Learn how NFC chips, terminals and wallets communicate in contactless card payments, and how security, limits and compatibility are managed." />
   <meta name="twitter:image" content="https://choose.creditcard/preview.png?utm_source=nfc.creditcard&utm_medium=referral&utm_campaign=twitter_image" />
 
   <!-- GA4 -->
@@ -31,6 +31,10 @@
     gtag('config', 'G-64FE63JQ3H');
   </script>
 
+  <!-- Tailwind for utility classes -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Your shared minisite styles -->
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body class="bg-slate-950 text-slate-100">
@@ -40,12 +44,12 @@
         <div class="cc-logo">CC</div>
         <div class="brand-text">
           <div class="brand-title">NFC.Creditcard</div>
-          <div class="brand-subtitle">NFC & Contactless Technology Explained</div>
+          <div class="brand-subtitle">NFC in Card & Wallet Payments</div>
         </div>
       </div>
-      <nav class="nav-links">
+      <nav class="nav-links" aria-label="Page navigation">
         <a href="#overview">Overview</a>
-        <a href="#signal">Signal & Range</a>
+        <a href="#mechanics">How It Works</a>
         <a href="#compare">Compare</a>
       </nav>
     </div>
@@ -56,175 +60,159 @@
     <div class="cc-breadcrumb">
       <a href="https://choose.creditcard/?utm_source=nfc.creditcard&utm_medium=referral&utm_campaign=breadcrumb">Home</a>
       &nbsp;›&nbsp;
-      NFC & Contactless
+      NFC.Creditcard
     </div>
 
     <!-- Hero -->
     <section class="hero">
       <div class="hero-content">
-        <h1>How NFC Contactless Card Payments Actually Work</h1>
+        <h1>How NFC Powers Tap-to-Pay Card & Wallet Transactions</h1>
         <p class="hero-lead">
-          NFC.Creditcard explains the hardware and protocol side of contactless cards: antennas, signal ranges, EMV cryptograms and why “tap” is both fast and secure.
+          NFC is the short-range radio layer that makes contactless payments possible. This page explains how the chip in your card or phone talks to the terminal, what data is exchanged, and how issuers use that information to approve or decline a transaction.
         </p>
         <a class="cta" href="https://choose.creditcard/?utm_source=nfc.creditcard&utm_medium=referral&utm_campaign=hero_cta">
-          Compare contactless-ready cards
+          Compare NFC & tap-to-pay ready cards
         </a>
       </div>
     </section>
 
-    <!-- Sections -->
+    <!-- Content sections -->
     <section id="overview" class="section">
-      <h2>What Is NFC in a Credit Card?</h2>
-      <p>NFC (Near Field Communication) in payment cards is a short-range radio technology running at 13.56 MHz. The card contains:</p>
-      <ul class="list">
-        <li>A tiny loop antenna embedded in the plastic.</li>
-        <li>A secure chip running EMV contactless applications.</li>
-        <li>Logic to power up only when in a strong enough magnetic field.</li>
-      </ul>
-      <p>When you bring the card within a few centimeters of a terminal, the field from the reader inductively powers the chip and enables secure data exchange.</p>
+      <h2>What Is NFC in the Context of Credit Cards?</h2>
+      <p>Near-field communication (NFC) is a very short-range wireless technology used to exchange small amounts of data between a card or device and a payment terminal. In contactless payments, NFC replaces the physical contact of inserting a chip or swiping a magnetic stripe.</p>
+      <p>The NFC chip embedded in a card, phone or wearable follows strict standards so that terminals can recognize it, negotiate which application to use and securely request the information needed to start a payment. The goal is to keep the interaction fast while still supporting the same risk checks as traditional card present transactions.</p>
     </section>
 
-    <section id="signal" class="section">
-      <h2>Signal, Range and Orientation</h2>
-      <p>NFC is designed for very short range — typically a few centimeters. Range depends on:</p>
-      <ul class="list">
-        <li><strong>Antenna size & placement:</strong> Where the loop is in the card or device.</li>
-        <li><strong>Reader power & sensitivity:</strong> How strong the terminal field is.</li>
-        <li><strong>Orientation:</strong> Alignment between card loop and reader coil.</li>
-        <li><strong>Interference:</strong> Other metal objects, cases or multiple cards.</li>
-      </ul>
-      <p>This is why some cards work best when you tap a particular corner or edge against the terminal.</p>
+    <section id="mechanics" class="section">
+      <h2>How NFC Talks to the Terminal During a Tap</h2>
+      <p>When you bring a card or device within a few centimeters of the reader, the terminal creates an electromagnetic field. The NFC antenna in your card harvests a tiny amount of energy from this field and uses it to power the chip long enough to speak back to the terminal.</p>
+      <p>The two sides exchange a series of short messages: first to agree on the communication mode, then to select a card application and finally to transmit a limited set of credentials and a dynamic cryptogram or token. This payload is then wrapped into a standard authorization request sent over the usual card network rails.</p>
     </section>
 
     <section class="section">
-      <h2>EMV Contactless vs. “Simple” NFC</h2>
-      <p>Not all NFC is equal. EMV contactless payments include cryptography and risk checks. Key points:</p>
-      <ul class="list">
-        <li>Each transaction uses a unique cryptogram — data is not reusable.</li>
-        <li>The card never simply “broadcasts” the PAN in plain text to any device.</li>
-        <li>Terminals must follow strict certification to be allowed on networks.</li>
-      </ul>
-      <p>By contrast, simple NFC tags (e.g. in posters or cards used for access control) may just store an ID or URL with minimal protection.</p>
+      <h2>Data, Distance and Practical Security Boundaries</h2>
+      <p>NFC operates at a very short range, typically a few centimeters. That limited distance, combined with strict timing rules, makes it difficult for someone standing several meters away to eavesdrop or conduct a relay attack without specialized equipment and careful setup.</p>
+      <p>In addition, modern NFC payment flows rarely expose the full card number directly. Instead, they use dynamic cryptograms or tokenized credentials that become useless once the specific authorization is completed, shrinking the value of any intercepted data.</p>
     </section>
 
     <section class="section">
-      <h2>Skimming Myths vs. Practical Risks</h2>
-      <p>Because NFC is short-range, attacks require very close proximity plus specialized gear. Real-world obstacles include:</p>
-      <ul class="list">
-        <li>Signal strength drops quickly with distance.</li>
-        <li>Wallets, bags and other cards interfere with clean coupling.</li>
-        <li>Random passersby cannot easily guess card position and orientation.</li>
-      </ul>
-      <p>The more realistic risks often come from phishing, malware or compromised merchants — not drive-by NFC scanning.</p>
+      <h2>NFC in Physical Cards vs Mobile Wallets</h2>
+      <p>Physical contactless cards use NFC to share data that is tightly bound to the chip itself. Mobile wallets use the same NFC radio but pair it with tokenization and biometric checks, replacing the card number with a device-specific token and requiring fingerprint or face verification before the token can be used.</p>
+      <p>From the terminal’s perspective, both types of tap look similar. The differences live in how credentials are stored and protected inside the card or device, and how much extra context the issuer receives about the device, wallet and authentication method used.</p>
     </section>
 
     <section class="section">
-      <h2>Phones, Wearables and Tokenization</h2>
-      <p>In phones and wearables, NFC is used together with tokenization:</p>
-      <ul class="list">
-        <li>The Secure Element or equivalent stores a network token, not your raw card number.</li>
-        <li>Payment tokens are mapped to your card in the background by the network.</li>
-        <li>Revoking a token (e.g. on a lost phone) does not cancel the physical card itself.</li>
-      </ul>
-      <p>This layering adds an extra safety net on top of EMV cryptography.</p>
+      <h2>Limits, Compatibility and Real-World Behaviour</h2>
+      <p>NFC payments depend on both the card and the terminal supporting the same standards. Older terminals may turn off contactless for certain transaction types, currencies or risk patterns, even when the card itself can handle it.</p>
+      <p>Issuers and schemes also define contactless limits, where small NFC payments can flow without a PIN, while larger ones trigger additional checks. These rules can vary by country and can change over time as fraud data and regulation evolve.</p>
     </section>
 
-    <!-- Comparison Table -->
+    <!-- Comparison block -->
     <section id="compare" class="section">
-      <h2>Comparing NFC Form Factors</h2>
+      <h2>Compare NFC & Contactless Capabilities Across Cards</h2>
       <div class="table-wrap">
         <table class="table">
           <thead>
             <tr>
-              <th>Form Factor</th>
-              <th>Strengths</th>
-              <th>Technical Considerations</th>
+              <th>Feature</th>
+              <th>What to Look For</th>
+              <th>Why It Matters</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Plastic Card</td>
-              <td>Simple, no battery, widely supported</td>
-              <td>Fixed antenna location, orientation-sensitive</td>
+              <td>NFC Support</td>
+              <td>Contactless enabled by default, option to disable</td>
+              <td>Lets you decide whether and when NFC can be used on your card.</td>
             </tr>
             <tr>
-              <td>Phone</td>
-              <td>Tokenization, biometrics, app controls</td>
-              <td>Depends on device hardware & OS NFC stack</td>
+              <td>Wallet Integration</td>
+              <td>Compatibility with Apple Pay, Google Pay and wearables</td>
+              <td>Determines whether you can rely on phones and watches for daily taps.</td>
             </tr>
             <tr>
-              <td>Watch / Wearable</td>
-              <td>Always-on wrist, great convenience</td>
-              <td>Small antenna, must align carefully with readers</td>
+              <td>Contactless Limits</td>
+              <td>Published thresholds for PIN-free and cumulative taps</td>
+              <td>Helps you understand how NFC payments behave for small vs large amounts.</td>
             </tr>
             <tr>
-              <td>NFC Sticker / Accessory</td>
-              <td>Can be placed on objects, niche use cases</td>
-              <td>Durability, security model depends on implementation</td>
+              <td>Security Features</td>
+              <td>Instant card lock, location controls, transaction alerts</td>
+              <td>Gives you tools to react quickly if a card or device is lost.</td>
+            </tr>
+            <tr>
+              <td>Travel &amp; FX Handling</td>
+              <td>How NFC works abroad, any extra checks or FX fees</td>
+              <td>Important if you tap frequently in other countries or currencies.</td>
             </tr>
           </tbody>
         </table>
       </div>
       <p class="small">
-        To find cards with strong contactless support across cards, phones and wearables, visit
+        For live product-by-product comparisons, visit
         <a href="https://choose.creditcard/?utm_source=nfc.creditcard&utm_medium=referral&utm_campaign=comparison_section">
           Choose.Creditcard
         </a>.
       </p>
     </section>
 
-    <!-- Cluster Links -->
+    <!-- Cluster links -->
     <section class="section">
-      <h2>Explore Related Contactless Microsites</h2>
+      <h2>Explore Related Payment Technologies</h2>
       <div class="cluster-grid">
         <a class="cluster-card" href="https://tap.creditcard/?utm_source=nfc.creditcard&utm_medium=referral&utm_campaign=cluster_tap">
           <h3>Tap.Creditcard</h3>
-          <p>End-to-end view of tap-to-pay transaction flows.</p>
+          <p>End-to-end explanation of tap-to-pay card transactions.</p>
         </a>
         <a class="cluster-card" href="https://tappay.creditcard/?utm_source=nfc.creditcard&utm_medium=referral&utm_campaign=cluster_tappay">
           <h3>TapPay.Creditcard</h3>
-          <p>User experience of daily tap-to-pay usage.</p>
-        </a>
-        <a class="cluster-card" href="https://wearable.creditcard/?utm_source=nfc.creditcard&utm_medium=referral&utm_campaign=cluster_wearable">
-          <h3>Wearable.Creditcard</h3>
-          <p>Using watches, rings and other NFC devices.</p>
+          <p>How terminals, risk engines and wallets interact in contactless flows.</p>
         </a>
         <a class="cluster-card" href="https://virtualpay.creditcard/?utm_source=nfc.creditcard&utm_medium=referral&utm_campaign=cluster_virtualpay">
           <h3>VirtualPay.Creditcard</h3>
-          <p>Virtual cards, app-based payments and tokens.</p>
+          <p>Virtual card numbers for online and in-app payments.</p>
         </a>
-        <a class="cluster-card" href="https://digitalpay.creditcard/?utm_source=nfc.creditcard&utm_medium=referral&utm_campaign=cluster_digitalpay">
-          <h3>DigitalPay.Creditcard</h3>
-          <p>Digital-first payment experiences and apps.</p>
+        <a class="cluster-card" href="https://wearable.creditcard/?utm_source=nfc.creditcard&utm_medium=referral&utm_campaign=cluster_wearable">
+          <h3>Wearable.Creditcard</h3>
+          <p>Using rings, watches and bands as NFC payment devices.</p>
+        </a>
+        <a class="cluster-card" href="https://tech.creditcard/?utm_source=nfc.creditcard&utm_medium=referral&utm_campaign=cluster_tech">
+          <h3>Tech.Creditcard</h3>
+          <p>Broader look at modern card technology and payment infrastructure.</p>
         </a>
       </div>
     </section>
 
-    <!-- Collection Section -->
+    <!-- Collection section -->
     <section class="section">
       <h2>Part of The CreditCard Collection</h2>
       <p class="small">
-        NFC.Creditcard is the hardware-and-protocol spoke in <strong>The CreditCard Collection</strong> — a network of focused microsites operated by ronarn AS.
+        NFC.Creditcard is one spoke in <strong>The CreditCard Collection</strong> — a network of focused microsites operated by ronarn AS. Each site isolates one piece of the card-technology stack and explains it in plain language before sending you to independent comparison tools.
       </p>
       <p class="small">
-        We cover the technical foundations of card payments so product teams and consumers can understand what’s really happening at the terminal.
+        We do not issue cards or manufacture terminals. The content here is based on scheme documentation, issuer materials and public technical references, presented in a neutral, educational format.
       </p>
       <p class="small">
-        For neutral card comparisons across APR, fees, rewards and contactless support, visit
-        <a href="https://choose.creditcard/?utm_source=nfc.creditcard&utm_medium=referral&utm_campaign=collection_section">
-          Choose.Creditcard
-        </a>.
+        Nothing on this site is financial, legal or engineering advice. Always rely on your issuer’s official documentation and local regulations when deciding how to configure and use contactless features on your cards and devices.
       </p>
+
+      <!-- REQUIRED HUB SNIPPET: Technology hub -->
+      <div class="hub-link">
+        <a href="https://choose.creditcard/technology/?utm_source=nfc.creditcard&utm_medium=referral&utm_campaign=minisite_to_hub"
+           class="text-sm text-slate-600 hover:text-slate-900">
+          Learn more at the Technology hub
+        </a>
+      </div>
     </section>
 
     <!-- Bottom CTA -->
     <section class="section">
-      <h2>Ready to Put NFC Knowledge to Use?</h2>
+      <h2>Ready to Compare NFC-Enabled Cards?</h2>
       <p class="small">
-        Use NFC.Creditcard to understand the underlying tech — then choose cards that take full advantage of modern contactless capabilities.
+        Use NFC.Creditcard to understand how the radio layer of contactless payments works, then visit the main comparison hub to find cards with the NFC, wallet integration and security profile that match how you prefer to pay.
       </p>
       <a class="cta" href="https://choose.creditcard/?utm_source=nfc.creditcard&utm_medium=referral&utm_campaign=bottom_cta">
-        Compare contactless cards on Choose.Creditcard
+        Go to Choose.Creditcard
       </a>
     </section>
   </main>
